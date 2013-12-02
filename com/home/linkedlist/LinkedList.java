@@ -1,10 +1,10 @@
 package com.home.linkedlist;
 
 public class LinkedList {
-	private static Node start;
-	private static Node end;
+	public Node start;
+	private Node end;
 	
-	private static void insertBeginning(int info) {
+	void insertBeginning(int info) {
 		if (start == null) {
 			start = new Node();
 			start.info = info;
@@ -19,7 +19,7 @@ public class LinkedList {
 		
 	}
 	
-	private static void insertEnd(int info) {
+	void insertEnd(int info) {
 		Node n = new Node();
 		n.info = info;
 		if (end == null) {
@@ -34,7 +34,7 @@ public class LinkedList {
 		}
 	}
 	
-	private static void insertMiddle(int search, int info) {
+	void insertMiddle(int search, int info) {
 		Node n = new Node();
 		n.info = info;
 		Node trav = start;
@@ -55,7 +55,7 @@ public class LinkedList {
 		}
 	}
 	
-	private static void deleteBeginning() {
+	void deleteBeginning() {
 		if (start == null) {
 			return;
 		}
@@ -69,7 +69,7 @@ public class LinkedList {
 		}
 	}
 	
-	private static void deleteEnd() {
+	void deleteEnd() {
 		if (end == null) {
 			return;
 		}
@@ -88,7 +88,7 @@ public class LinkedList {
 		}
 	}
 	
-	private static void deleteMiddle(int info) {
+	void deleteMiddle(int info) {
 		if (start == null) {
 			return;
 		}
@@ -119,8 +119,8 @@ public class LinkedList {
 		}
 	}
 	
-	private static void print() {
-		Node trav = start;
+	void print(Node root) {
+		Node trav = root;
 		while (trav != null) {
 			System.out.print(trav.info + " ");
 			trav = trav.next;
@@ -128,25 +128,26 @@ public class LinkedList {
 	}
 
 	public static void main(String[] args) {
-		insertBeginning(7);
-		insertBeginning(6);
-		insertBeginning(5);
-		print();
+		LinkedList lList = new LinkedList();
+		lList.insertBeginning(7);
+		lList.insertBeginning(6);
+		lList.insertBeginning(5);
+		lList.print(lList.start);
 		System.out.println("\n------------------------");
-		insertEnd(4);
-		print();
+		lList.insertEnd(4);
+		lList.print(lList.start);
 		System.out.println("\n------------------------");
-		insertMiddle(6, 9);
-		print();
+		lList.insertMiddle(6, 9);
+		lList.print(lList.start);
 		System.out.println("\n------------------------");
-		deleteBeginning();
-		print();
+		lList.deleteBeginning();
+		lList.print(lList.start);
 		System.out.println("\n------------------------");
-		deleteEnd();
-		print();
+		lList.deleteEnd();
+		lList.print(lList.start);
 		System.out.println("\n------------------------");
-		deleteMiddle(9);
-		print();
+		lList.deleteMiddle(9);
+		lList.print(lList.start);
 	}
 
 }
