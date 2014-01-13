@@ -126,6 +126,18 @@ public class LinkedList {
 			trav = trav.next;
 		}
 	}
+	
+	public void reverseLinkedList() {
+		Node trav = start;
+		Node prev = null;
+		while(trav != null) {
+			Node temp = trav.next;
+			trav.next = prev;
+			prev = trav;
+			trav = temp;
+		}
+		start = prev;
+	}
 
 	public static void main(String[] args) {
 		LinkedList lList = new LinkedList();
@@ -142,11 +154,12 @@ public class LinkedList {
 		System.out.println("\n------------------------");
 		lList.deleteBeginning();
 		lList.print(lList.start);
+//		System.out.println("\n------------------------");
+//		lList.deleteEnd();
+//		lList.print(lList.start);
 		System.out.println("\n------------------------");
-		lList.deleteEnd();
-		lList.print(lList.start);
-		System.out.println("\n------------------------");
-		lList.deleteMiddle(9);
+//		lList.deleteMiddle(9);
+		lList.reverseLinkedList();
 		lList.print(lList.start);
 	}
 
