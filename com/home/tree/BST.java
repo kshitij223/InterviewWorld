@@ -4,27 +4,27 @@ package com.home.tree;
 
 public class BST {
 	
-	public void insert(TreeNode root, int data) {
-		if (root == null) {
-			root = new TreeNode();
-			root.info = data;
-		}
-		else {
-			while(root != null) {
-				if (data<root.info) {
-					root.nodesToLeft++;
-					root = root.left;
-				}
-				else if (data>root.info) {
-					root = root.right;
-				}
-				else {
-					System.out.println("Found duplicate");
-					return;
-				}
-			}			
-		}
-	}
+//	public void insert(TreeNode root, int data) {
+//		if (root == null) {
+//			root = new TreeNode();
+//			root.info = data;
+//		}
+//		else {
+//			while(root != null) {
+//				if (data<root.info) {e
+//					root.nodesToLeft++;
+//					root = root.left;
+//				}
+//				else if (data>root.info) {
+//					root = root.right;
+//				}
+//				else {
+//					System.out.println("Found duplicate");
+//					return;
+//				}
+//			}			
+//		}
+//	}
 	
 	public int getRank(TreeNode root, int toFind) {
 		if (root == null) {
