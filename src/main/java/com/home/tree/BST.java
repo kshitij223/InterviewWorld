@@ -26,6 +26,44 @@ public class BST {
 //		}
 //	}
 	
+	static TreeNode root = null;
+	public void insert (TreeNode node, int data) {
+		if (root == null) {
+			root = new TreeNode(data);
+			root.parent = null;
+			return;
+		}
+		
+		if (data == node.info) {
+			System.out.println("Duplicate node found");
+		} else if (node.info > data) {
+			if (node.left == null) {
+				TreeNode temp = new TreeNode(data);
+				node.left = temp;
+				temp.parent = node;
+			} else {
+				insert(node.left, data);
+			}
+		} else {
+			if (node.right == null) {
+				TreeNode temp = new TreeNode(data);
+				node.right = temp;
+				temp.parent = node;
+			} else {
+				insert(node.right, data);
+			}
+		}
+	}
+	
+	public void inorder (TreeNode root) {
+		if(root == null) {
+			return;
+		}
+		inorder(root.left);
+		System.out.println(root.info);
+		inorder(root.right);
+	}
+	
 	public int getRank(TreeNode root, int toFind) {
 		if (root == null) {
 			return -1;
@@ -50,7 +88,17 @@ public class BST {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		BST obj = new BST();
+		obj.insert(root, 1);
+		obj.insert(root, 2);
+		obj.insert(root, 3);
+		obj.insert(root, 4);
+		obj.insert(root, 4);
+		obj.insert(root, 6);
+		obj.insert(root, 7);
+		obj.insert(root, 8);
+		
+		obj.inorder(root);
 	}
 
 }
