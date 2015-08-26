@@ -3,8 +3,8 @@ package com.home.dynamicprogramming;
 public class CountPennies1 {
 
 	public static void main(String[] args) {
-		System.out.println(makeChange(100, 25));
-		//System.out.println(findWays(10));
+		System.out.println(makeChange(25, 25));
+		System.out.println(findWays(10));
 	}
 	
 	public static int makeChange(int n, int denom) {
@@ -38,8 +38,8 @@ public class CountPennies1 {
 			return 0;
 		}
 		else {
-			//return findWays(n-1) + findWays(n-5) + findWays(n-10) + findWays(n-25);
-			return findWays(n-1) + findWays(n-3) + findWays(n-5);
+			return findWays(n-25) + findWays(n-10) + findWays(n-5) + findWays(n-1);
+			//return findWays(n-1) + findWays(n-3) + findWays(n-5);
 		}
 	}
 }

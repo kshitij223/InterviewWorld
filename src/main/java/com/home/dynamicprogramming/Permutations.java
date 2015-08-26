@@ -10,13 +10,32 @@ public class Permutations {
 	public static void main(String[] args) {
 		
 		// Write permutations of the given string.
-		System.out.println(permute("abc"));
-		//System.out.println("abc".substring(0, 1));
-		
-		// Write permutations with repetitions allowed.
+//		System.out.println(permute("abc"));
+//		//System.out.println("abc".substring(0, 1));
+//		
+//		// Write permutations with repetitions allowed.
 		Set<String> set = new HashSet<>();
-		permuteWithReps("aba", "", set);
+		permuteWithReps("abb", "", set);
         System.out.println(set);
+//		char[] arr = "abc".toCharArray();
+//		permWithReps2(arr, "");
+	}
+	
+	private static void permWithReps2(char[] input, String solution) {
+		if (input==null) {
+			return;
+		}
+		
+		for (int i=0; i<input.length; i++) {
+			String current = solution+input[i];
+			if (current.length() == input.length) {
+				System.out.println(current);
+			} else {
+				permWithReps2(input, current);
+			}
+			
+		}
+		
 	}
 
 	private static void permuteWithReps(String input, String sofar, Set<String> set) {
