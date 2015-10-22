@@ -27,7 +27,10 @@ public class MyDFS {
  
             System.out.println("The DFS traversal of the graph is ");
             MyDFS dfs = new MyDFS();
-            dfs.dfs(adjacency_matrix, source);
+            //dfs.dfs(adjacency_matrix, source);
+            
+            int[] visited = new int[adjacency_matrix.length];
+            dfs.dfs(adjacency_matrix, source, visited);
  
         } catch (InputMismatchException inputMismatch)
         {
@@ -57,6 +60,30 @@ public class MyDFS {
 		}
 		
 	}
+	
+	private void dfs(int[][] adjacency_matrix, int source, int[] visited) {
+		int[] adjList = adjacency_matrix[source];
+		visited[source]=1;
+		System.out.println(source);
+		for (int i=0; i<adjList.length; i++) {
+			if (adjList[i]==1 && visited[i]==0) {
+				dfs(adjacency_matrix, i, visited);
+			}
+		}
+	}
+	
+	public String getSubString(String inputString, String subString) { 
+		int maxOccurence = 0; 
+		for (int i = 0; i < subString.length(); i++) { 
+			char subStringChars = subString.charAt(i); 
+			int charOccurence = inputString.indexOf(subStringChars); 
+			if (charOccurence < 0) 
+				return ""; 
+			else if (charOccurence > maxOccurence) 
+				maxOccurence = charOccurence; 
+		} 
+		return inputString.substring(0,maxOccurence+1); 
+	}
 
 	private int getUnvisitedNode(int[][] adjacency_matrix, int source,
 			int[] visited) {
@@ -68,6 +95,23 @@ public class MyDFS {
 			}
 		}
 		return -1;
+	}
+	
+	public int[] multipleAllNumbers(int[] array) {
+		int[][] storeTempResult = new int[array.length-1][array.length-1]; 
+		int addedMultiple =1; 
+		for(int i =0;i<array.length;i++){ 
+			addedMultiple = addedMultiple*array[i]; 
+			storeTempResult[0][i] = addedMultiple; 
+		} 
+		for(int i =array.length-1;i>=0;i--) { 
+			addedMultiple = addedMultiple*array[i]; 
+			storeTempResult[i][array.length-1] = addedMultiple; 
+		} 
+		for(int i =0;i<array.length;i++){ 
+			array[i] = storeTempResult[0][i-1]*storeTempResult[i+1][array.length-1]; 
+		} 
+		return array; 
 	}
 
 }

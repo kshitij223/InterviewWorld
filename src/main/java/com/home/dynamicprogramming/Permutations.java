@@ -10,12 +10,12 @@ public class Permutations {
 	public static void main(String[] args) {
 		
 		// Write permutations of the given string.
-//		System.out.println(permute("abc"));
+		//System.out.println(permute("abc"));
 //		//System.out.println("abc".substring(0, 1));
 //		
 //		// Write permutations with repetitions allowed.
-		Set<String> set = new HashSet<>();
-		permuteWithReps("abb", "", set);
+		List<String> set = new ArrayList<>();
+		permuteWithReps("abbc", "", set);
         System.out.println(set);
 //		char[] arr = "abc".toCharArray();
 //		permWithReps2(arr, "");
@@ -38,7 +38,7 @@ public class Permutations {
 		
 	}
 
-	private static void permuteWithReps(String input, String sofar, Set<String> set) {
+	private static void permuteWithReps(String input, String sofar, List<String> set) {
 	        if (input.equals("")) {
 	            set.add(sofar);
 	        }

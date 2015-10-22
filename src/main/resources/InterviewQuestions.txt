@@ -1,0 +1,50 @@
+There is a list inside list [1,2,[3,[4,5],7],8,9]. Make API which would give next integer. You are given an iterator and an API which tells if next element is integer or an iterator itself for the next list.
+
+Difference between process and threads.
+
+Find contiguous regions in a linked list
+a-b-c-d-e-f-g-h
+Given - a,d,e,h gives 3 connected components (a,de,h)
+
+You have lots of files which import other files. You have to define a way of how to compile them such that they should be in a correct sequence.
+Example, class A imports B, then B should come before A.
+
+A safe can be opened with 4 digits. Make the longest integer (array) which when pressed on any random safe in the world would open that safe. This integer would be very long. What is the most optimal size? How would you make the array.
+
+What is concurrent hash map in detail?
+
+Correlation between latency and throughput.
+
+Listener queue?
+
+JVM architecture.
+
+Memory management
+
+Multiprocessor system and JVM configuration.
+
+Oracle schema design
+
+Given a matrix of integers in no order, find the two integers from different columns, such that there sum is max.
+
+How would you implement deep copy in java.
+
+You are making a book app. In this app you have to build a feature wherein the user can type in a string and you have to show the next nearest occurrences of the string. There will be next and previous buttons. User says - “name my ABC” Then you have to highlight “my name is ABC”. Note ordering could be different. The first answer should be where the 3 strings are nearest to each other and next should show the next nearest option.
+
+Atomic integers and compare and set.
+
+Blocking queues (multithreading). Focus is now can you make queue work as efficiently when you have many producers and consumers as threads working at the same time.
+ReadWriteLocks implementation in Java.
+
+You have houses and they have to be colored. The order should be such that no two houses next to each other can be colored in the same color. There is cost associated with coloring each house with each color. Find the minimum cost to paint all houses.
+	    H1     H2        H3       H4
+Red      0       10          4        14
+Blue     2        4           2         1
+Green   5        6          11        3
+
+Write a program to replace part of one string with another.
+Eg - S1=abcdef
+	S2-abc to xyz
+	Answer - xyzdef
+	
+How would you design tinyURL.

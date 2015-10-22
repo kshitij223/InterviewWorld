@@ -8,29 +8,36 @@ class Producer extends Thread {
 	public void run() {
 		System.out.println("I am writing data to the queue");
 		while(true) {
-			synchronized (queue) {
-				while (queue.size() == 3) {
-					try {
-						System.out.println("Waiting for queue to be empty");
-						queue.wait();
-					} catch (InterruptedException e) {
-						e.printStackTrace();
+			if (queue.size() == 3) {
+				synchronized (queue) {
+					while (queue.size() == 3) {
+						System.out.println("Looks like queue is full");
+						try {
+							System.out.println("Waiting for queue to be empty");
+							queue.wait();
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
 					}
 				}
-				try {
-					Thread.sleep(10000);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				for (int i=0; i<3; i++) {
-					if (queue.size()<3) {
-						queue.offer(i);
-					}
-				}
-				System.out.println("Produced items");
-				queue.notify();
 			}
+
+			for (int i=0; i<3; i++) {
+				if (queue.size()<3) {
+					synchronized (queue) {
+						if (queue.size()<3) {
+							queue.offer(i);
+						}
+					}
+				} else {
+					// Majority of the threads will come here.
+				}
+			}
+			System.out.println("Produced items");
+			synchronized (queue) {
+				queue.notifyAll();
+			}
+
 		}
 	}
 }
@@ -39,21 +46,30 @@ class Consumer extends Thread {
 	Queue<Integer> queue = null;
 	public void run() {
 		while(true) {
-			synchronized (queue) {
-				while (queue.isEmpty()) {
+			if (queue.isEmpty()) {
+				synchronized (queue) {
 					try {
-						System.out.println("Waiting for queue to have items");
-						queue.wait();
+						while (queue.isEmpty()) {
+							System.out.println("Waiting for queue to have items ");
+							queue.wait();
+						}
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
 				}
-				while (!queue.isEmpty()) {
-					queue.remove();
-				}
-				System.out.println("Consumed items");
-				queue.notify();
 			}
+			if (!queue.isEmpty()) {
+				synchronized (queue) {
+					if (!queue.isEmpty()) {
+						System.out.println("Just consumed " + queue.remove());
+					}
+				}
+			}
+			
+			synchronized (queue) {
+				queue.notifyAll();
+			}
+
 		}
 	}
 }
