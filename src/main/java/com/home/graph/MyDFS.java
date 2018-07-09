@@ -1,12 +1,20 @@
 package com.home.graph;
 
+import java.io.UnsupportedEncodingException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.Stack;
 
 public class MyDFS {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws UnsupportedEncodingException {
+		char c = 970;
+		String s = new String(new char[]{c});
+		System.out.println(s.length());
+		System.out.println(s.toCharArray().length);
+		System.out.println(s.getBytes("UTF-8").length);
+		
+		
         int number_no_nodes, source;
         Scanner scanner = null;
  
